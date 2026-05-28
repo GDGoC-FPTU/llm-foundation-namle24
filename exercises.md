@@ -1,62 +1,55 @@
-# Ngày 1 — Bài Tập & Phản Ánh
-## Nền Tảng LLM API | Phiếu Thực Hành
+# Day 1 Exercises and Reflection
+## LLM API Foundation Practice
 
-**Thời lượng:** 1:30 giờ  
-**Cấu trúc:** Lập trình cốt lõi (60 phút) → Bài tập mở rộng (30 phút)
+Duration: 1:30 hours
+Structure: Core coding (60 minutes) then extension exercises (30 minutes)
 
----
+## Part 1 — Core Coding (0:00 to 1:00)
 
-## Phần 1 — Lập Trình Cốt Lõi (0:00–1:00)
+Run the Colab examples at: https://colab.research.google.com/drive/172zCiXpLr1FEXMRCAbmZoqTrKiSkUERm?usp=sharing
 
-Chạy các ví dụ trong Google Colab tại: https://colab.research.google.com/drive/172zCiXpLr1FEXMRCAbmZoqTrKiSkUERm?usp=sharing
+Implement every TODO in `template.py`. Use `pytest tests/` to check progress.
 
-Triển khai tất cả TODO trong `template.py`. Chạy `pytest tests/` để kiểm tra tiến độ.
+Check point: after completing the first 4 tasks, run:
 
-**Điểm kiểm tra:** Sau khi hoàn thành 4 nhiệm vụ, chạy:
 ```bash
 python template.py
 ```
-Bạn sẽ thấy output so sánh phản hồi của GPT-4o và GPT-4o-mini.
 
----
+You should see comparison output for GPT-4o and GPT-4o-mini.
 
-## Phần 2 — Bài Tập Mở Rộng (1:00–1:30)
+## Part 2 — Extension Exercises (1:00 to 1:30)
 
-### Bài tập 2.1 — Độ Nhạy Của Temperature
-Gọi `call_openai` với các giá trị temperature 0.0, 0.5, 1.0 và 1.5 sử dụng prompt **"Hãy kể cho tôi một sự thật thú vị về Việt Nam."**
+### Exercise 2.1 — Temperature Sensitivity
+Call `call_openai` with temperature values 0.0, 0.5, 1.0, and 1.5 using the prompt "Tell me one interesting fact about Vietnam."
 
-**Bạn nhận thấy quy luật gì qua bốn phản hồi?** (2–3 câu)
-> *Câu trả lời của bạn*
+What pattern do you notice across the four responses? (2 to 3 sentences)
+> When temperature is low, responses are more focused, direct, and repeatable. Higher temperature values produce more creative and varied answers, with more detail and less strict wording.
 
-**Bạn sẽ đặt temperature bao nhiêu cho chatbot hỗ trợ khách hàng, và tại sao?**
-> *Câu trả lời của bạn*
+What temperature would you choose for a customer support chatbot, and why?
+> I would use a low temperature like 0.0 to 0.2 so the bot stays consistent, accurate, and avoids unnecessary or risky creativity.
 
----
+### Exercise 2.2 — Cost Tradeoff
+Consider this scenario: 10,000 active users per day, each making 3 API calls, and each call averages 350 tokens.
 
-### Bài tập 2.2 — Đánh Đổi Chi Phí
-Xem xét kịch bản: 10.000 người dùng hoạt động mỗi ngày, mỗi người thực hiện 3 lần gọi API, mỗi lần trung bình ~350 token.
+Estimate how many times more expensive GPT-4o is than GPT-4o-mini for this workload.
+> GPT-4o is roughly 30 to 35 times more expensive than GPT-4o-mini for the same token volume.
 
-**Ước tính xem GPT-4o đắt hơn GPT-4o-mini bao nhiêu lần cho workload này:**
-> *Câu trả lời của bạn*
+Describe one case where the higher cost of GPT-4o is worth it, and one case where GPT-4o-mini is the better choice.
+> GPT-4o is worth it for complex analysis, high-quality content creation, or critical use cases with strong accuracy needs. GPT-4o-mini is better for high-volume FAQ handling, simple automation, and cost-sensitive applications.
 
-**Mô tả một trường hợp mà chi phí cao hơn của GPT-4o là xứng đáng, và một trường hợp GPT-4o-mini là lựa chọn tốt hơn:**
-> *Câu trả lời của bạn*
+### Exercise 2.3 — User Experience with Streaming
+When is streaming most important, and when is non-streaming more appropriate? (one paragraph)
+> Streaming is most important for real-time chat and long responses, because it gives the user immediate feedback and reduces perceived delay. Non-streaming is more appropriate for short answers, batch jobs, or cases where the final result can be shown only after all processing is complete.
 
----
-
-### Bài tập 2.3 — Trải Nghiệm Người Dùng với Streaming
-**Streaming quan trọng nhất trong trường hợp nào, và khi nào thì non-streaming lại phù hợp hơn?** (1 đoạn văn)
-> *Câu trả lời của bạn*
-
-
-## Danh Sách Kiểm Tra Nộp Bài
-- [ ] Tất cả tests pass: `pytest tests/ -v`
-- [ ] `call_openai` đã triển khai và kiểm thử
-- [ ] `call_openai_mini` đã triển khai và kiểm thử
-- [ ] `compare_models` đã triển khai và kiểm thử
-- [ ] `streaming_chatbot` đã triển khai và kiểm thử
-- [ ] `retry_with_backoff` đã triển khai và kiểm thử
-- [ ] `batch_compare` đã triển khai và kiểm thử
-- [ ] `format_comparison_table` đã triển khai và kiểm thử
-- [ ] `exercises.md` đã điền đầy đủ
-- [ ] Sao chép bài làm vào folder `solution` và đặt tên theo quy định 
+## Submission Checklist
+- [ ] All tests pass: `pytest tests/ -v`
+- [ ] `call_openai` implemented and verified
+- [ ] `call_openai_mini` implemented and verified
+- [ ] `compare_models` implemented and verified
+- [ ] `streaming_chatbot` implemented and verified
+- [ ] `retry_with_backoff` implemented and verified
+- [ ] `batch_compare` implemented and verified
+- [ ] `format_comparison_table` implemented and verified
+- [ ] `exercises.md` completed in English
+- [ ] Copy your work to the `solution` folder as required
